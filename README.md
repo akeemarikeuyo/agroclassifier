@@ -6,11 +6,11 @@ A machine learning web app that predicts the **toxicity level** of an agrochemic
 
 This project was built to help classify agrochemicals into three toxicity categories:
 
-| Label | Meaning |
-|-------|---------|
-| 0 | Low concern |
-| 1 | Moderate concern |
-| 2 | High concern |
+| Label | Meaning          |
+| ----- | ---------------- |
+| 0     | Low concern      |
+| 1     | Moderate concern |
+| 2     | High concern     |
 
 The model was trained on the **APisTox dataset** — a collection of agrochemical records from sources like ECOTOX, PPDB, and BPDB — using a scikit-learn pipeline that handles preprocessing and classification automatically.
 
@@ -35,11 +35,13 @@ agroClassifyDeploy/
 ## How to Run
 
 1. Install dependencies:
+
    ```bash
    pip install -r requirements.txt
    ```
 
 2. Launch the app:
+
    ```bash
    streamlit run app.py
    ```
@@ -57,4 +59,5 @@ agroClassifyDeploy/
 
 ---
 
+https://agroclassifier-akeem.streamlit.app/
 ML Project done by **Akeem Arikeuyo**
