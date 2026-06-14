@@ -60,4 +60,9 @@ agroClassifyDeploy/
 ---
 
 https://agroclassifier-akeem.streamlit.app/
+
+---
+
+##
+
 ML Project done by **Akeem Arikeuyo**
