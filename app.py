@@ -3,9 +3,9 @@ import pandas as pd
 import joblib
 
 LABEL_INFO = {
-    0: ("success", "Low concern"),
-    1: ("warning", "Moderate concern"),
-    2: ("error", "High concern"),
+    0: ("success", "Low concern", "Low"),
+    1: ("warning", "Moderate concern", "Moderate"),
+    2: ("error", "High concern", "High"),
 }
 
 try:
@@ -37,11 +37,11 @@ input_data = pd.DataFrame([{
 
 if st.button("🔍 Predict", type="primary"):
     prediction = model.predict(input_data)[0]
-    icon, level, label = LABEL_INFO[prediction]
+    level, label, short = LABEL_INFO[prediction]
 
     st.subheader("Prediction Result")
-    st.metric(label="Toxicity Level", value=f"{icon} {label}", delta=f"Class {prediction}")
-    getattr(st, level)(f"{icon} This agrochemical is classified as **{label}** (Level {prediction})")
+    st.metric(label="Toxicity Level", value=short, delta=f"Class {prediction}")
+    getattr(st, level)(f"This agrochemical is classified as **{label}** (Level {prediction})")
 
     if hasattr(model, 'predict_proba'):
         proba = model.predict_proba(input_data)[0]
