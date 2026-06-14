@@ -38,13 +38,16 @@ input_data = pd.DataFrame([{
 if st.button("🔍 Predict", type="primary"):
     prediction = model.predict(input_data)[0]
     icon, level, label = LABEL_INFO[prediction]
-    getattr(st, level)(f"{icon} Predicted label: **{prediction}** ({label})")
+
+    st.subheader("Prediction Result")
+    st.metric(label="Toxicity Level", value=f"{icon} {label}", delta=f"Class {prediction}")
+    getattr(st, level)(f"{icon} This agrochemical is classified as **{label}** (Level {prediction})")
 
     if hasattr(model, 'predict_proba'):
         proba = model.predict_proba(input_data)[0]
         label_map = {0: 'Low (0)', 1: 'Moderate (1)', 2: 'High (2)'}
         classes = model.classes_ if hasattr(model, 'classes_') else range(len(proba))
-        st.write("**Class probabilities:**")
+        st.subheader("Class Probability Distribution")
         prob_df = pd.DataFrame({
             'Toxicity Level': [label_map.get(c, str(c)) for c in classes],
             'Probability': proba
