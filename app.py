@@ -3,9 +3,9 @@ import pandas as pd
 import joblib
 
 LABEL_INFO = {
-    0: ("✅", "success", "Low concern"),
-    1: ("⚠️", "warning", "Moderate concern"),
-    2: ("❌", "error", "High concern"),
+    0: ("success", "Low concern"),
+    1: ("warning", "Moderate concern"),
+    2: ("error", "High concern"),
 }
 
 try:
