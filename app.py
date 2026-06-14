@@ -42,9 +42,11 @@ if st.button("🔍 Predict", type="primary"):
 
     if hasattr(model, 'predict_proba'):
         proba = model.predict_proba(input_data)[0]
+        label_map = {0: 'Low (0)', 1: 'Moderate (1)', 2: 'High (2)'}
+        classes = model.classes_ if hasattr(model, 'classes_') else range(len(proba))
         st.write("**Class probabilities:**")
         prob_df = pd.DataFrame({
-            'Toxicity Level': ['Low (0)', 'Moderate (1)', 'High (2)'],
+            'Toxicity Level': [label_map.get(c, str(c)) for c in classes],
             'Probability': proba
         })
         st.bar_chart(prob_df.set_index('Toxicity Level'))
